@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}SpaceX Launches{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'launches/css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>SpaceX Launches</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'launches:home' %}">Главная</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'launches:logout' %}">Выход</a></li>
+                {% else %}
+                    <li><a href="{% url 'launches:login' %}">Вход</a></li>
+                    <li><a href="{% url 'launches:register' %}">Регистрация</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 SpaceX Launches</p>
+    </footer>
+</body>
+</html>
