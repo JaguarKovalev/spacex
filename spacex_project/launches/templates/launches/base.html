@@ -13,14 +13,23 @@
         <nav>
             <ul>
                 <li><a href="{% url 'launches:home' %}">Главная</a></li>
+                <li><a href="{% url 'launches:about' %}">О проекте</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'launches:logout' %}">Выход</a></li>
+                    <li>
+                        <form method="post" action="{% url 'launches:logout' %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" style="background: none; border: none; color: blue; cursor: pointer;">
+                                Выход
+                            </button>
+                        </form>
+                    </li>
                 {% else %}
                     <li><a href="{% url 'launches:login' %}">Вход</a></li>
                     <li><a href="{% url 'launches:register' %}">Регистрация</a></li>
                 {% endif %}
             </ul>
         </nav>
+        
     </header>
     <main>
         {% block content %}{% endblock %}

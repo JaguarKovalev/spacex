@@ -5,4 +5,11 @@
 {% block content %}
 <h2>Добро пожаловать в SpaceX Launches!</h2>
 <p>Здесь вы можете искать данные о запусках SpaceX по году.</p>
+
+<form method="GET" action="{% url 'launches:search_launches' %}">
+    <label for="year">Введите год:</label>
+    <input type="number" id="year" name="year" required>
+    <button type="submit">Искать</button>
+</form>
 {% endblock %}
+

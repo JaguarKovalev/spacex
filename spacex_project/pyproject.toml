@@ -2,7 +2,7 @@
 name = "spacex-project"
 version = "0.1.0"
 description = ""
-authors = ["JaguarKovalev <jaguarkovalev@gmail.com>"]
+authors = ["Oleg Shilov <OlegShilov@bk.ru>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
@@ -10,6 +10,7 @@ python = "^3.12"
 django = "^5.1.4"
 requests = "^2.32.3"
 django-redis = "^5.4.0"
+matplotlib = "^3.10.0"
 
 
 [build-system]

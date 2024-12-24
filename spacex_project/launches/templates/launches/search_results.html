@@ -1,0 +1,27 @@
+{% extends 'launches/base.html' %}
+{% load static %}
+{% block title %}Результаты поиска{% endblock %}
+
+{% block content %}
+<h2>Результаты запусков SpaceX за {{ year }}</h2>
+
+{% if launches %}
+    <ul>
+        {% for launch in launches %}
+            <li>
+                <strong>Миссия:</strong> {{ launch.mission_name }}<br>
+                <strong>Дата:</strong> {{ launch.date }}<br>
+                <strong>Успешность:</strong> {{ launch.success|yesno:"Да,Нет" }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% if graph_url %}
+        <h3>График запусков</h3>
+        <img src="{{graph_url }}" alt="График запусков">
+    {% endif %}
+{% else %}
+    <p>Запусков за {{ year }} не найдено.</p>
+{% endif %}
+{% endblock %}
+
